@@ -1,6 +1,7 @@
 package com.yfweather.app.activity;
 
 import com.yfweather.app.R;
+import com.yfweather.app.service.AutoUpdateService;
 import com.yfweather.app.util.HttpCallbackListener;
 import com.yfweather.app.util.HttpUtil;
 import com.yfweather.app.util.Utility;
@@ -163,6 +164,8 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
 
+		Intent intent = new Intent(this,AutoUpdateService.class);
+		startService(intent);
 	}
 
 	@Override

@@ -26,6 +26,12 @@
         </activity>
         <activity android:name="com.yfweather.app.activity.WeatherActivity" >
         </activity>
+
+        <service android:name="com.yfweather.app.service.AutoUpdateService" >
+        </service>
+
+        <receiver android:name="com.yfweather.app.receiver.AutoUpdateReceiver" >
+        </receiver>
     </application>
 
 </manifest>
