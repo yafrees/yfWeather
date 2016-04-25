@@ -40,7 +40,7 @@ public class ChooseAreaActivity extends Activity{
 	private ListView listView;
 
 	private ArrayAdapter<String> adapter;
-	private yfWeatherDB yfweatherdb;
+	private yfWeatherDB yfweatherDB;
 
 	private List<String> dataList = new ArrayList<String>();
 
@@ -89,7 +89,7 @@ public class ChooseAreaActivity extends Activity{
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
 		listView.setAdapter(adapter);
 		
-		yfweatherdb = yfWeatherDB.getInstance(this);
+		yfweatherDB = yfWeatherDB.getInstance(this);
 
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -124,7 +124,7 @@ public class ChooseAreaActivity extends Activity{
 	 * 查询全国所有的省，优先从数据库查询，如果没有查询到再去服务器上查询
 	 * */
 	private void queryProvinces(){
-		provinceList = yfweatherdb.loadProvinces();
+		provinceList = yfweatherDB.loadProvinces();
 		if (provinceList.size() > 0) {
 			dataList.clear();
 
@@ -147,7 +147,7 @@ public class ChooseAreaActivity extends Activity{
 	 * */
 	private void queryCities(){
 
-		cityList = yfweatherdb.loadCities(selectedProvince.getId());
+		cityList = yfweatherDB.loadCities(selectedProvince.getId());
 		if (cityList.size() > 0) {
 			dataList.clear();
 
@@ -170,7 +170,7 @@ public class ChooseAreaActivity extends Activity{
 	 * */
 	private void queryCounties(){
 
-		countyList = yfweatherdb.loadCounties(selectedCity.getId());
+		countyList = yfweatherDB.loadCounties(selectedCity.getId());
 		if (countyList.size() > 0) {
 			dataList.clear();
 
@@ -216,13 +216,13 @@ public class ChooseAreaActivity extends Activity{
 				boolean result = false;
 
 				if ("province".equals(type)) {
-					result = Utility.handleProvincesResponse(yfweatherdb, response);
+					result = Utility.handleProvincesResponse(yfweatherDB, response);
 				}
 				else if ("city".equals(type)) {
-					result = Utility.handleCitiesResponse(yfweatherdb, response, selectedProvince.getId());
+					result = Utility.handleCitiesResponse(yfweatherDB, response, selectedProvince.getId());
 				}
 				else if ("county".equals(type)) {
-					result = Utility.handleCountiesResponse(yfweatherdb, response, selectedCity.getId());
+					result = Utility.handleCountiesResponse(yfweatherDB, response, selectedCity.getId());
 				}
 
 				if (result) {

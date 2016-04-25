@@ -26,7 +26,7 @@ public class Utility {
 			String response){
 
 		if (!TextUtils.isEmpty(response)) {
-			String [] allProvinces = response.split("£¬");
+			String [] allProvinces = response.split(",");
 
 			if (allProvinces != null && allProvinces.length > 0) {
 				for(String p : allProvinces){
@@ -53,7 +53,7 @@ public class Utility {
 			String response , int provinceId){
 
 		if (!TextUtils.isEmpty(response)) {
-			String [] allCities = response.split("£¬");
+			String [] allCities = response.split(",");
 
 			if (allCities != null && allCities.length > 0) {
 				for(String c : allCities){
@@ -81,7 +81,7 @@ public class Utility {
 			String response , int cityId){
 
 		if (!TextUtils.isEmpty(response)) {
-			String [] allCounties = response.split("£¬");
+			String [] allCounties = response.split(",");
 
 			if (allCounties != null && allCounties.length > 0) {
 				for(String c : allCounties){

@@ -7,7 +7,6 @@ public class City {
 	private String cityCode;
 	private int provinceId;
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -32,6 +31,8 @@ public class City {
 	public void setProvinceId(int provinceId) {
 		this.provinceId = provinceId;
 	}
+	
+	
 	
 	
 

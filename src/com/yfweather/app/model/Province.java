@@ -1,11 +1,10 @@
 package com.yfweather.app.model;
 
 public class Province {
-	
+
 	private int id;
 	private String provinceName;
 	private String provinceCode;
-	
 	public int getId() {
 		return id;
 	}
@@ -24,6 +23,7 @@ public class Province {
 	public void setProvinceCode(String provinceCode) {
 		this.provinceCode = provinceCode;
 	}
-	
+
+
 
 }
