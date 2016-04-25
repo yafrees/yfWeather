@@ -54,7 +54,8 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.weather_lauout);
 
 		//初始化各控件
-		weatherInfoLayout = (LinearLayout) findViewById(R.id.city_name);
+		weatherInfoLayout = (LinearLayout) findViewById(R.id.weather_info_layout);
+		cityNameText = (TextView) findViewById(R.id.city_name);
 		publishText = (TextView) findViewById(R.id.publish_text);
 		weatherDespText = (TextView) findViewById(R.id.weather_desp);
 		temp1Text = (TextView) findViewById(R.id.temp1);
@@ -85,7 +86,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	}
 
 	/**
-	 * 查新县级盗号锁对象的天气代号
+	 * 查新县级代号所对象的天气代号
 	 * */
 	private void queryWeatherCode(String countyCode){
 		String address = "https://www.weather.com.cn/data/list3/city" + countyCode + ".xml";
@@ -97,7 +98,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 * 查询天气代号锁对应的天气
 	 * */
 	private void queryWeatherInfo(String weatherCode){
-		String address = "https://www.weather.com.cn/data/cityInfo/" + weatherCode + ".html";
+		String address = "https://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
 		queryFromServer(address, "weatherCode");
 
 	}
@@ -110,7 +111,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
 
 			@Override
-			public void onFinish(String response) {
+			public void onFinish(final String response) {
 				// TODO Auto-generated method stub
 				if ("countyCode".equals(type)) {
 					if (!TextUtils.isEmpty(response)) {
@@ -127,6 +128,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 					Utility.handleWeatherResponse(WeatherActivity.this, response);
 
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							showWeather();	
 						}
@@ -138,6 +140,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			public void onError(Exception e) {
 				// TODO Auto-generated method stub
 				runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						publishText.setText("同步失败！");
 					}
@@ -187,6 +190,8 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			if (!TextUtils.isEmpty(weatherCode)) {
 				queryWeatherInfo(weatherCode);
 			}
+			break;
+		default:
 			break;
 
 		}

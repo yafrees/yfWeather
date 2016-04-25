@@ -22,7 +22,7 @@ public class Utility {
 	/**
 	 * 解析和处理服务器返回的省级数据
 	 * */
-	public synchronized static boolean handleProvincesResponse(yfWeatherDB yfWeatherDB , 
+	public synchronized static boolean handleProvincesResponse(yfWeatherDB yfweatherdb , 
 			String response){
 
 		if (!TextUtils.isEmpty(response)) {
@@ -36,7 +36,7 @@ public class Utility {
 					province.setProvinceName(array[1]);
 
 					//将解析出来的数据存储到Province表
-					yfWeatherDB.saveProvince(province);
+					yfweatherdb.saveProvince(province);
 				}
 				return true;
 			}
@@ -49,7 +49,7 @@ public class Utility {
 	/**
 	 * 解析和处理服务器返回的市级数据
 	 * */
-	public synchronized static boolean handleCitiesResponse(yfWeatherDB yfWeatherDB , 
+	public synchronized static boolean handleCitiesResponse(yfWeatherDB yfweatherdb , 
 			String response , int provinceId){
 
 		if (!TextUtils.isEmpty(response)) {
@@ -65,7 +65,7 @@ public class Utility {
 					city.setProvinceId(provinceId);
 
 					//将解析出来的数据存储到city表
-					yfWeatherDB.saveCity(city);
+					yfweatherdb.saveCity(city);
 				}
 				return true;
 			}
@@ -77,7 +77,7 @@ public class Utility {
 	/**
 	 * 解析和处理服务器返回的县级数据
 	 * */
-	public synchronized static boolean handleCountiesResponse(yfWeatherDB yfWeatherDB , 
+	public synchronized static boolean handleCountiesResponse(yfWeatherDB yfweatherdb , 
 			String response , int cityId){
 
 		if (!TextUtils.isEmpty(response)) {
@@ -93,7 +93,7 @@ public class Utility {
 					county.setCityId(cityId);
 
 					//将解析出来的数据存储到county表
-					yfWeatherDB.saveCounty(county);
+					yfweatherdb.saveCounty(county);
 				}
 				return true;
 			}

@@ -12,6 +12,7 @@ public class HttpUtil {
 			final HttpCallbackListener listener){
 		
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				HttpURLConnection connection = null;
 				
@@ -21,7 +22,7 @@ public class HttpUtil {
 					URL url = new URL(address);
 					connection = (HttpURLConnection) url.openConnection();
 					connection.setRequestMethod("GET");
-					connection.setReadTimeout(8000);
+					connection.setConnectTimeout(8000);
 					connection.setReadTimeout(8000);
 					
 					InputStream in = connection.getInputStream();

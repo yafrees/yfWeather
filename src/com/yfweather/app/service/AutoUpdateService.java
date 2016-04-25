@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.widget.RemoteViews.RemoteView;
 
 public class AutoUpdateService extends Service{
 
@@ -26,6 +27,7 @@ public class AutoUpdateService extends Service{
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TODO Auto-generated method stub
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				updateWeather();
 			}
@@ -48,7 +50,7 @@ public class AutoUpdateService extends Service{
 	private void updateWeather(){
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		String weatherCode = prefs.getString("weather_code", "");
-		String address = "https://www.weather.com.cn/data/cityInfo/" + weatherCode + ".html";
+		String address = "https://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
 
 		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
 

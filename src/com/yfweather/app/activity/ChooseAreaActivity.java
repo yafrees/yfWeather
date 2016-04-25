@@ -40,7 +40,7 @@ public class ChooseAreaActivity extends Activity{
 	private ListView listView;
 
 	private ArrayAdapter<String> adapter;
-	private yfWeatherDB yfweatherDB;
+	private yfWeatherDB yfweatherdb;
 
 	private List<String> dataList = new ArrayList<String>();
 
@@ -87,8 +87,9 @@ public class ChooseAreaActivity extends Activity{
 		titleText = (TextView) findViewById(R.id.title_text);
 
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
-
-		yfweatherDB = yfWeatherDB.getInstance(this);
+		listView.setAdapter(adapter);
+		
+		yfweatherdb = yfWeatherDB.getInstance(this);
 
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -123,7 +124,7 @@ public class ChooseAreaActivity extends Activity{
 	 * 查询全国所有的省，优先从数据库查询，如果没有查询到再去服务器上查询
 	 * */
 	private void queryProvinces(){
-		provinceList = yfweatherDB.loadProvinces();
+		provinceList = yfweatherdb.loadProvinces();
 		if (provinceList.size() > 0) {
 			dataList.clear();
 
@@ -146,7 +147,7 @@ public class ChooseAreaActivity extends Activity{
 	 * */
 	private void queryCities(){
 
-		cityList = yfweatherDB.loadCities(selectedProvince.getId());
+		cityList = yfweatherdb.loadCities(selectedProvince.getId());
 		if (cityList.size() > 0) {
 			dataList.clear();
 
@@ -169,7 +170,7 @@ public class ChooseAreaActivity extends Activity{
 	 * */
 	private void queryCounties(){
 
-		countyList = yfweatherDB.loadCounty(selectedCity.getId());
+		countyList = yfweatherdb.loadCounties(selectedCity.getId());
 		if (countyList.size() > 0) {
 			dataList.clear();
 
@@ -198,11 +199,11 @@ public class ChooseAreaActivity extends Activity{
 	private void queryFromServer(final String code , final String type ){
 		String address;
 		if (!TextUtils.isEmpty(code)) {
-			address = "http://www.weather.com.cn/data/lista/city" + code + ".xml";
+			address = "http://www.weather.com.cn/data/list3/city" + code + ".xml";
 			//address = "http://www.heweather.com/documents/cn-city-list" + code + ".xml";
 		}
 		else {
-			address = "http://www.weather.com.cn/data/lista/city.xml";
+			address = "http://www.weather.com.cn/data/list3/city.xml";
 			//address = "http://www.heweather.com/documents/cn-city-list.xml";
 		}
 		showProgressDialog();
@@ -215,17 +216,18 @@ public class ChooseAreaActivity extends Activity{
 				boolean result = false;
 
 				if ("province".equals(type)) {
-					result = Utility.handleProvincesResponse(yfweatherDB, response);
+					result = Utility.handleProvincesResponse(yfweatherdb, response);
 				}
 				else if ("city".equals(type)) {
-					result = Utility.handleCitiesResponse(yfweatherDB, response, selectedProvince.getId());
+					result = Utility.handleCitiesResponse(yfweatherdb, response, selectedProvince.getId());
 				}
 				else if ("county".equals(type)) {
-					result = Utility.handleCountiesResponse(yfweatherDB, response, selectedCity.getId());
+					result = Utility.handleCountiesResponse(yfweatherdb, response, selectedCity.getId());
 				}
 
 				if (result) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							closeProgressDialog();
 							if ("province".equals(type)) {
@@ -248,6 +250,7 @@ public class ChooseAreaActivity extends Activity{
 			public void onError(Exception e) {
 				// TODO Auto-generated method stub
 				runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						closeProgressDialog();
 						Toast.makeText(ChooseAreaActivity.this, "加载失败", Toast.LENGTH_LONG)
