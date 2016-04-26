@@ -16,22 +16,27 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.yfweather.app.activity.ChooseAreaActivity"
+            android:name=".activity.ChooseAreaActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".activity.WeatherActivity" >
+        </activity>
+
+        <service android:name=".service.AutoUpdateService" >
+        </service>
+
+        <receiver android:name=".receiver.AutoUpdateReceiver" >
+        </receiver>
+
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/title_activity_welcome" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.yfweather.app.activity.WeatherActivity" >
-        </activity>
-
-        <service android:name="com.yfweather.app.service.AutoUpdateService" >
-        </service>
-
-        <receiver android:name="com.yfweather.app.receiver.AutoUpdateReceiver" >
-        </receiver>
     </application>
 
 </manifest>
