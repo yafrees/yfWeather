@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#66CDAA"
-    tools:context="com.yfweather.app.WelcomeActivity" >
+    tools:context="com.yfweather.app.activity.WelcomeActivity" >
 
     <RelativeLayout
         android:layout_width="match_parent"

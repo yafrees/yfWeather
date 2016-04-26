@@ -97,7 +97,6 @@ public class ChooseAreaActivity extends Activity{
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
 				
-				
 				if (currentLevel == LEVEL_PROVINCE) {
 					selectedProvince = provinceList.get(position);
 					queryCities();

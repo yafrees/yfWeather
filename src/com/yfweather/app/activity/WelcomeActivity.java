@@ -1,6 +1,7 @@
-package com.yfweather.app;
+package com.yfweather.app.activity;
 
-import com.yfweather.app.activity.WeatherActivity;
+import com.yfweather.app.R;
+import com.yfweather.app.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;
