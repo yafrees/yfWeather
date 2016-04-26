@@ -135,8 +135,8 @@ public class Utility {
 	/**
 	 * 将服务器的所有天气信息存储到Sharedpreference文件中
 	 * */
-	public static void saveWeatherInfo(Context context,String cityName,String weatherCode,
-			String temp1,String temp2,String weatherDesp ,String publishTime ){
+	public static void saveWeatherInfo(Context context, String cityName, String weatherCode,
+			String temp1, String temp2, String weatherDesp , String publishTime ){
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日",Locale.CHINA);
 
@@ -155,13 +155,7 @@ public class Utility {
 		editor.putString("current_date", sdf.format(new Date()));
 		
 		editor.commit();
-		
-		
 
 	}
-
-
-
-
 
 }

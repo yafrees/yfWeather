@@ -68,7 +68,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		refreshWeather.setOnClickListener(this);
 
 
-		String countyCode = getIntent().getStringExtra("countyCode");
+		String countyCode = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCode)) {
 			//有县级代号就去查询天气
 			publishText.setText("同步中...");
@@ -89,7 +89,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 * 查新县级代号所对象的天气代号
 	 * */
 	private void queryWeatherCode(String countyCode){
-		String address = "https://www.weather.com.cn/data/list3/city" + countyCode + ".xml";
+		String address = "http://www.weather.com.cn/data/list3/city" + countyCode + ".xml";
 
 		queryFromServer(address, "countyCode");
 	}
@@ -98,7 +98,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 * 查询天气代号锁对应的天气
 	 * */
 	private void queryWeatherInfo(String weatherCode){
-		String address = "https://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
+		String address = "http://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
 		queryFromServer(address, "weatherCode");
 
 	}
