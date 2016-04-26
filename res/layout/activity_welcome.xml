@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#27A5F9"
+    android:background="#66CDAA"
     tools:context="com.yfweather.app.WelcomeActivity" >
 
     <RelativeLayout

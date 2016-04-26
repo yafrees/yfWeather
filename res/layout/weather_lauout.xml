@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#484E61" >
+        android:background="#66CDAA" >
 
         <Button
             android:id="@+id/switch_city"
@@ -33,13 +33,20 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:background="@drawable/refresh" />
+        
+        <ImageView 
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="6dp"
+            android:layout_below="@id/city_name"
+            android:background="@drawable/white_line"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#eee" >
+        android:background="#66CDAA" >
 
         <TextView
             android:id="@+id/publish_text"
@@ -48,7 +55,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:textColor="#484E61"
+            android:textColor="#FFF"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -64,7 +71,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="#484E61"
+                android:textColor="#FFF"
                 android:textSize="18sp" />
 
             <TextView
@@ -73,7 +80,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:textColor="#484E61"
+                android:textColor="#FFF"
                 android:textSize="40sp" />
 
             <LinearLayout
@@ -87,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="#484E61"
+                    android:textColor="#FFF"
                     android:textSize="40sp" />
 
                 <TextView
@@ -97,7 +104,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:text="~"
-                    android:textColor="#484E61"
+                    android:textColor="#FFF"
                     android:textSize="40sp" />
 
                 <TextView
@@ -105,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="#484E61"
+                    android:textColor="#FFF"
                     android:textSize="40sp" />
             </LinearLayout>
         </LinearLayout>

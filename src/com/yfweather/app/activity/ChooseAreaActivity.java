@@ -88,7 +88,7 @@ public class ChooseAreaActivity extends Activity{
 
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
 		listView.setAdapter(adapter);
-		
+
 		yfweatherDB = yfWeatherDB.getInstance(this);
 
 		listView.setOnItemClickListener(new OnItemClickListener() {
@@ -96,6 +96,8 @@ public class ChooseAreaActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
+				
+				
 				if (currentLevel == LEVEL_PROVINCE) {
 					selectedProvince = provinceList.get(position);
 					queryCities();
@@ -300,6 +302,27 @@ public class ChooseAreaActivity extends Activity{
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		if (currentLevel == LEVEL_COUNTY) {
+			queryCities();
+		}
+		else if (currentLevel == LEVEL_CITY) {
+			queryProvinces();
+		}
+		else {
+			if (isFromWeatherActivity) {
+				Intent intent = new Intent(this,WeatherActivity.class);
+				startActivity(intent);
+			}
+			finish();
+		}
+	}
+
+
+	/**
+	 * ×Ô¶¨Òå¼àÌý
+	 * */
+
+	public void back_layout(View v){
 		if (currentLevel == LEVEL_COUNTY) {
 			queryCities();
 		}
